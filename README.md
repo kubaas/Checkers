@@ -1,2 +1,2 @@
-# Checkers-C-
+# Checkers-C++
 Checkers C++
