@@ -5,20 +5,20 @@
 #ifndef CHECKERS_SQUARE_H
 #define CHECKERS_SQUARE_H
 
+#include "Piece.h"
+
 
 class Square {
 private:
-    int x;
-    int y;
+    Piece* piece;
 public:
-    int getX() const;
+    Square();
 
-    int getY() const;
+    void setPiece(Piece *piece);
 
-    void setX(int x);
+    Piece *getPiece() const;
 
-    void setY(int y);
-
+    bool hasPiece();
 };
 
 

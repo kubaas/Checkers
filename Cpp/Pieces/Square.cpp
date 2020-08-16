@@ -4,18 +4,21 @@
 
 #include "../../Headers/Pieces/Square.h"
 
-int Square::getX() const {
-    return x;
+
+void Square::setPiece(Piece *piece) {
+    Square::piece = piece;
 }
 
-int Square::getY() const {
-    return y;
+Piece *Square::getPiece() const {
+    return piece;
 }
 
-void Square::setX(int x) {
-    Square::x = x;
+bool Square::hasPiece() {
+    return this->piece != nullptr;
 }
 
-void Square::setY(int y) {
-    Square::y = y;
+Square::Square() {
+
+    this->piece = NULL;
+
 }

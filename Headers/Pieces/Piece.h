@@ -6,17 +6,36 @@
 #define CHECKERS_PIECE_H
 
 
-#include "Square.h"
+#include <vector>
 
-class Piece : Square {
+enum Color {RED = 1, WHITE = -1};
+
+class Piece {
+private:
+    int x;
+    int y;
+    Color color;
+
 public:
-    Piece(int x, int y);
+    Piece(int x, int y, Color color);
 
-    virtual void isMoveValid();
+    int getColor() const;
 
-    virtual void move();
+    void setColor(Color color);
 
-    virtual void print();
+    void setX(int x);
+
+    void setY(int y);
+
+    int getX() const;
+
+    int getY() const;
+
+    virtual void isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) = 0;
+
+    virtual void move(std::vector<std::vector<Piece *>> array) = 0;
+
+    virtual void print() = 0;
 };
 
 

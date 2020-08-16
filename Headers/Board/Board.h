@@ -6,7 +6,26 @@
 #define CHECKERS_BOARD_H
 
 
+#include <vector>
+#include "../Pieces/Square.h"
+#include "../Util/MoveUtil.h"
+
 class Board {
+private:
+    std::vector<std::vector<Square>> boardFields;
+    const static char kLegalSpace = '.';
+    const static char kIllegaleSpace = ' ';
+    const static char kValidPlayerO = 'o';
+    const static char kValidPlayerX = 'x';
+    MoveUtil tryMove(Piece* piece, int newX, int newY);
+
+public:
+    const std::vector<std::vector<Square>> &getBoardFields() const;
+    void setBoardFields(const std::vector<std::vector<Square>> &boardFields);
+    void initialize();
+    Square getBoardField(int, int);
+    void printBoard();
+    void setBoardField(Square);
 
 };
 
