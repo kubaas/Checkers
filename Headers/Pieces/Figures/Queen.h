@@ -13,7 +13,10 @@ class Queen : public Piece {
 
     void isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) override;
 
-    void move(std::vector<std::vector<Piece *>> array) override;
+public:
+    MoveUtil move(std::vector<std::vector<Square>> vector, int i, int i1) override;
+
+private:
 
     void print() override;
 };

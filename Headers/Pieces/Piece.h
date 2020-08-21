@@ -7,8 +7,13 @@
 
 
 #include <vector>
+#include "Square.h"
+#include "../Util/MoveUtil.h"
 
 enum Color {RED = 1, WHITE = -1};
+
+class Square;
+class MoveUtil;
 
 class Piece {
 private:
@@ -18,6 +23,8 @@ private:
 
 public:
     Piece(int x, int y, Color color);
+
+    virtual ~Piece() {};
 
     int getColor() const;
 
@@ -33,7 +40,7 @@ public:
 
     virtual void isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) = 0;
 
-    virtual void move(std::vector<std::vector<Piece *>> array) = 0;
+    virtual MoveUtil move(std::vector<std::vector<Square>> , int , int) = 0;
 
     virtual void print() = 0;
 };

@@ -19,6 +19,6 @@ bool Square::hasPiece() {
 
 Square::Square() {
 
-    this->piece = NULL;
+    this->piece = nullptr;
 
 }

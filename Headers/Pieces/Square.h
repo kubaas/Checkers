@@ -7,6 +7,7 @@
 
 #include "Piece.h"
 
+class Piece;
 
 class Square {
 private:

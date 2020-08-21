@@ -6,7 +6,7 @@
 #define CHECKERS_NORMAL_H
 
 
-#include "../Piece.h"
+#include "../../Util/MoveUtil.h"
 
 class Normal : public Piece {
 public:
@@ -14,7 +14,7 @@ public:
 
     void isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) override;
 
-    void move(std::vector<std::vector<Piece *>> array) override;
+    MoveUtil move(std::vector<std::vector<Square>> array, int newX, int newY) override;
 
     void print() override;
 };

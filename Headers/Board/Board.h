@@ -8,7 +8,6 @@
 
 #include <vector>
 #include "../Pieces/Square.h"
-#include "../Util/MoveUtil.h"
 
 class Board {
 private:
@@ -17,7 +16,7 @@ private:
     const static char kIllegaleSpace = ' ';
     const static char kValidPlayerO = 'o';
     const static char kValidPlayerX = 'x';
-    MoveUtil tryMove(Piece* piece, int newX, int newY);
+//    MoveUtil tryMove(Piece* piece, int newX, int newY);
 
 public:
     const std::vector<std::vector<Square>> &getBoardFields() const;
@@ -26,6 +25,7 @@ public:
     Square getBoardField(int, int);
     void printBoard();
     void setBoardField(Square);
+    void tryMove(int, char, int, char);
 
 };
 
