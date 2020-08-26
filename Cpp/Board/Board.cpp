@@ -11,6 +11,7 @@
 
 const char tab[] = "ABCDEFGH";
 
+Board* Board::Instance = nullptr;
 
 const std::vector<std::vector<Square>> &Board::getBoardFields() const {
     return boardFields;
@@ -21,6 +22,7 @@ void Board::setBoardFields(const std::vector<std::vector<Square>> &boardFields) 
 }
 
 void Board::initialize() {
+
     for (int x = 0; x < 8; x++) {
         std::vector<Square> v1;
         for (int y = 0; y < 8; y++) {
@@ -35,7 +37,7 @@ void Board::initialize() {
     for (int x = 5; x < 8; x++) {
         for (int y = 0; y < 8; y++) {
             if ((x + y) % 2) {
-                this->boardFields[x][y].setPiece(new Queen(x, y, Color(-1)));
+                this->boardFields[x][y].setPiece(new Normal(x, y, Color(-1)));
                 this->wNumber++;
             } // WHITE
         }
@@ -76,9 +78,6 @@ void Board::printBoard() {
     for (int y = 0; y < 8; y++) {
         std::cout << tab[y] << " ";
     }
-
-    if(checkWinCondition() == true) exit(0);
-
 }
 
 void Board::setBoardField(Square square) {
@@ -121,7 +120,13 @@ void Board::tryMove(int old_number, char old_letter, int new_number, char new_le
             Piece* piece = boardFields[oldX][oldY].getPiece();
             piece->setX(newX);
             piece->setY(newY);
-            boardFields[newX][newY].setPiece(piece);
+
+            if ((piece->getColor() == 1 && newX == 7) || (piece->getColor() == -1 && newX == 0)) {
+                int color = piece->getColor();
+                boardFields[newX][newY].setPiece(new Queen(newX, newY, Color(color)));
+            }
+            else boardFields[newX][newY].setPiece(piece);
+
             boardFields[oldX][oldY].setPiece(nullptr);
             break;
         }
@@ -130,7 +135,11 @@ void Board::tryMove(int old_number, char old_letter, int new_number, char new_le
             Piece* piece = boardFields[oldX][oldY].getPiece();
             piece->setX(newX);
             piece->setY(newY);
-            boardFields[newX][newY].setPiece(piece);
+            if ((piece->getColor() == 1 && newX == 7) || (piece->getColor() == -1 && newX == 0)) {
+                int color = piece->getColor();
+                boardFields[newX][newY].setPiece(new Queen(newX, newY, Color(color)));
+            }
+            else boardFields[newX][newY].setPiece(piece);
             boardFields[oldX][oldY].setPiece(nullptr);
 
             Piece* otherPiece = trymv.getPiece();
@@ -140,7 +149,6 @@ void Board::tryMove(int old_number, char old_letter, int new_number, char new_le
             else this->rNumber--;
 
             break;
-
     }
 }
 
@@ -158,6 +166,14 @@ bool Board::checkWinCondition() {
     }
     else return false;
 
+}
+
+Board *Board::GetInstance() {
+    if(Instance == nullptr)
+    {
+        Instance = new Board();
+    }
+    return Instance;
 }
 
 

@@ -12,7 +12,10 @@ void Queen::isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) {
 
 
 void Queen::print() {
-    std::cout << "q ";
+    if(this->getColor() == Color(-1))
+        std::cout<<"qw";
+    else
+        std::cout<<"qr";
 }
 
 MoveUtil Queen::move(std::vector<std::vector<Square>> boardFields, int newX, int newY) {

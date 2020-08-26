@@ -18,9 +18,14 @@ private:
     const static char kValidPlayerX = 'x';
     int rNumber;
     int wNumber;
-//    MoveUtil tryMove(Piece* piece, int newX, int newY);
+    static Board* Instance;
+    Board(){}
 
 public:
+    Board(Board &other) = delete;
+    void operator=(const Board&) = delete;
+    static Board *GetInstance();
+    ~Board() = default;
     const std::vector<std::vector<Square>> &getBoardFields() const;
     void setBoardFields(const std::vector<std::vector<Square>> &boardFields);
     void initialize();
