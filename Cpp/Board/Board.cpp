@@ -7,19 +7,10 @@
 #include "../../Headers/Pieces/Figures/Queen.h"
 
 #include <iostream>
-#include <cmath>
 
 const char tab[] = "ABCDEFGH";
 
-Board* Board::Instance = nullptr;
-
-const std::vector<std::vector<Square>> &Board::getBoardFields() const {
-    return boardFields;
-}
-
-void Board::setBoardFields(const std::vector<std::vector<Square>> &boardFields) {
-    Board::boardFields = boardFields;
-}
+Board *Board::Instance = nullptr;
 
 void Board::initialize() {
 
@@ -54,18 +45,14 @@ void Board::initialize() {
 
 }
 
-Square Board::getBoardField(int x, int y) const {
-    return boardFields[x][y];
-}
 
-void Board::printBoard() {
+void Board::printBoard() const{
     for (int x = 0; x < 8; x++) {
         std::cout << x + 1 << " ";
         for (int y = 0; y < 8; y++) {
-            if (boardFields[x][y].hasPiece() == true) {
+            if (boardFields[x][y].hasPiece()) {
                 boardFields[x][y].getPiece()->print();
-//                std::cout << x << y;
-            } else if (boardFields[x][y].hasPiece() != true && (x + y) % 2) {
+            } else if (!boardFields[x][y].hasPiece() && (x + y) % 2) {
                 std::cout << ". ";
             } else {
                 std::cout << "  ";
@@ -78,10 +65,6 @@ void Board::printBoard() {
     for (int y = 0; y < 8; y++) {
         std::cout << tab[y] << " ";
     }
-}
-
-void Board::setBoardField(Square square) {
-    boardFields[square.getPiece()->getX()][square.getPiece()->getY()] = square;
 }
 
 
@@ -101,8 +84,6 @@ void Board::tryMove(int old_number, char old_letter, int new_number, char new_le
         ++j;
     }
 
-    std::cout << oldX << " " << oldY << std::endl;
-    std::cout << newX << " " << newY << std::endl;
 
     MoveUtil trymv = NONE;
 
@@ -115,62 +96,54 @@ void Board::tryMove(int old_number, char old_letter, int new_number, char new_le
 
         case NONE:
             break;
-        case NORMAL:
-        {
-            Piece* piece = boardFields[oldX][oldY].getPiece();
+        case NORMAL: {
+            Piece *piece = boardFields[oldX][oldY].getPiece();
             piece->setX(newX);
             piece->setY(newY);
 
             if ((piece->getColor() == 1 && newX == 7) || (piece->getColor() == -1 && newX == 0)) {
                 int color = piece->getColor();
                 boardFields[newX][newY].setPiece(new Queen(newX, newY, Color(color)));
-            }
-            else boardFields[newX][newY].setPiece(piece);
+            } else boardFields[newX][newY].setPiece(piece);
 
             boardFields[oldX][oldY].setPiece(nullptr);
             break;
         }
 
         case KILL:
-            Piece* piece = boardFields[oldX][oldY].getPiece();
+            Piece *piece = boardFields[oldX][oldY].getPiece();
             piece->setX(newX);
             piece->setY(newY);
             if ((piece->getColor() == 1 && newX == 7) || (piece->getColor() == -1 && newX == 0)) {
                 int color = piece->getColor();
                 boardFields[newX][newY].setPiece(new Queen(newX, newY, Color(color)));
-            }
-            else boardFields[newX][newY].setPiece(piece);
+            } else boardFields[newX][newY].setPiece(piece);
             boardFields[oldX][oldY].setPiece(nullptr);
 
-            Piece* otherPiece = trymv.getPiece();
+            Piece *otherPiece = trymv.getPiece();
             boardFields[otherPiece->getX()][otherPiece->getY()].setPiece(nullptr);
 
-            if(piece->getColor() == 1) this->wNumber--;
+            if (piece->getColor() == 1) this->wNumber--;
             else this->rNumber--;
 
             break;
     }
 }
 
-bool Board::checkWinCondition() {
+bool Board::checkWinCondition() const {
 
-    if(rNumber == 0)
-    {
+    if (rNumber == 0) {
         std::cout << "White player wins" << std::endl;
         return true;
-    }
-    else if (wNumber == 0)
-    {
+    } else if (wNumber == 0) {
         std::cout << "Red player wins" << std::endl;
         return true;
-    }
-    else return false;
+    } else return false;
 
 }
 
 Board *Board::GetInstance() {
-    if(Instance == nullptr)
-    {
+    if (Instance == nullptr) {
         Instance = new Board();
     }
     return Instance;

@@ -11,16 +11,11 @@
 class Queen : public Piece {
     using Piece::Piece;
 
-    void isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) override;
-
 public:
     MoveUtil move(std::vector<std::vector<Square>> array, int newX, int newY) override;
-
 private:
-
     void print() override;
-
-    Piece *checkDiagonal(std::vector<std::vector<Square>> vector, int x0, int y0, int x, int y);
+    Piece *checkDiagonal(std::vector<std::vector<Square>> vector, int x0, int y0, int x, int y) const;
 };
 
 

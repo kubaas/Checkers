@@ -38,8 +38,6 @@ public:
 
     int getY() const;
 
-    virtual void isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) = 0;
-
     virtual MoveUtil move(std::vector<std::vector<Square>> , int , int) = 0;
 
     virtual void print() = 0;

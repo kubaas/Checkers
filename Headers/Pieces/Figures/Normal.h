@@ -12,8 +12,6 @@ class Normal : public Piece {
 public:
     using Piece::Piece;
 
-    void isMoveValid(std::vector<std::vector<Piece *>> array, int x, int y) override;
-
     MoveUtil move(std::vector<std::vector<Square>> array, int newX, int newY) override;
 
     void print() override;

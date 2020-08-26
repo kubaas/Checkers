@@ -20,14 +20,11 @@ public:
     }
 
 private:
-    Piece *piece;
+    Piece *piece{};
 public:
-    Piece* getPiece() { return piece;}
-    MoveUtil(MoveType type) { this->type = type;}
-    MoveUtil(MoveType type, Piece *piece) {
-        this->type = type;
-        this->piece = piece;
-    }
+    Piece* getPiece() const;
+    MoveUtil(MoveType type);
+    MoveUtil(MoveType type, Piece *piece);
 };
 
 
