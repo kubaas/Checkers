@@ -14,7 +14,6 @@ MoveUtil Normal::move(std::vector<std::vector<Square>> boardFields, int newX, in
 
    //MoveUtil Board::tryMove(Piece *piece, int newX, int newY) {
     if (boardFields[newX][newY].hasPiece() || (newX + newY) % 2 == 0) {
-        std::cout << "fff2 " << boardFields[newX][newY].hasPiece() << std::endl;
         return {NONE};
     }
 
