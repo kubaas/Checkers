@@ -1,11 +1,14 @@
 #include <iostream>
 #include "Headers/Board/Board.h"
+#define clear() printf("\033[H\033[J")
 
 int main() {
 
     int choice, x = 0, y = 0;
     Board *board = Board::GetInstance();
     board->initialize();
+
+    std::cout << "White starts" << std::endl << std::endl;
 
     while (board->checkWinCondition() != true) {
         board->printBoard();
@@ -21,6 +24,7 @@ int main() {
         std::cin >> newY;
 
         board->tryMove(oldX, oldY, newX, newY);
+        clear();
     }
 
 

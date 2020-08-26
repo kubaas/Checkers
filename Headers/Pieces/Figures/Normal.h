@@ -11,9 +11,8 @@
 class Normal : public Piece {
 public:
     using Piece::Piece;
-
+    ~Normal();
     MoveUtil move(std::vector<std::vector<Square>> array, int newX, int newY) override;
-
     void print() override;
 };
 

@@ -43,6 +43,8 @@ void Board::initialize() {
         }
     }
 
+    playerTurn = -1; // WHITE
+
 }
 
 
@@ -87,8 +89,10 @@ void Board::tryMove(int old_number, char old_letter, int new_number, char new_le
 
     MoveUtil trymv = NONE;
 
-    if (boardFields[oldX][oldY].hasPiece() && !boardFields[newX][newY].hasPiece()) {
+    if (boardFields[oldX][oldY].hasPiece() && !boardFields[newX][newY].hasPiece() && playerTurn == boardFields[oldX][oldY].getPiece()->getColor()) {
         trymv = boardFields[oldX][oldY].getPiece()->move(boardFields, newX, newY);
+        if (playerTurn == 1) playerTurn = -1;
+        else playerTurn = 1;
     }
 
 

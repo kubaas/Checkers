@@ -5,6 +5,10 @@
 #include "../../../Headers/Pieces/Figures/Normal.h"
 #include <iostream>
 
+Normal::~Normal() noexcept {
+//    std::cout << "Normal destructor" << std::endl;
+}
+
 MoveUtil Normal::move(std::vector<std::vector<Square>> boardFields, int newX, int newY) {
 
     //MoveUtil Board::tryMove(Piece *piece, int newX, int newY) {

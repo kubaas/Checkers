@@ -14,6 +14,7 @@ private:
     mutable std::vector<std::vector<Square>> boardFields;
     int rNumber;
     int wNumber;
+    int playerTurn;
     static Board* Instance;
     Board(){}
 

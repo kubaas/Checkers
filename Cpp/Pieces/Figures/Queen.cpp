@@ -6,6 +6,9 @@
 #include "../../../Headers/Board/Board.h"
 #include <iostream>
 
+Queen::~Queen() noexcept {
+//    std::cout << "Queen destructor" << std::endl;
+}
 
 void Queen::print() {
     if(this->getColor() == Color(-1))
