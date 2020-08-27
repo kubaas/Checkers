@@ -27,6 +27,9 @@ public:
     void printBoard() const;
     void tryMove(int, char, int, char);
     bool checkWinCondition() const;
+    int getRNumber() const;
+    int getWNumber() const;
+    int getPlayerTurn() const;
 };
 
 

@@ -8,14 +8,20 @@ int main() {
     Board *board = Board::GetInstance();
     board->initialize();
 
-    std::cout << "White starts" << std::endl << std::endl;
 
     while (board->checkWinCondition() != true) {
+
+        std::cout << "Score for white: " << 12 - board->getRNumber() << std::endl;
+        std::cout << "Score for red: " << 12 - board->getWNumber() << std::endl << std::endl;
+
         board->printBoard();
         int oldX, newX;
         char oldY, newY;
 
-        std::cout << std::endl << std::endl << "Pick your piece (number letter): " << std::endl;
+        std::cout << std::endl;
+        if(board->getPlayerTurn() == -1) { std::cout << std::endl << "Turn: WHITE" << std::endl; }
+        else { std::cout << std::endl << "Turn: RED" << std::endl; }
+        std::cout << "Pick your piece (number letter): " << std::endl;
         std::cin >> oldX;
         std::cin >> oldY;
 

@@ -153,4 +153,16 @@ Board *Board::GetInstance() {
     return Instance;
 }
 
+int Board::getRNumber() const {
+    return rNumber;
+}
+
+int Board::getWNumber() const {
+    return wNumber;
+}
+
+int Board::getPlayerTurn() const {
+    return playerTurn;
+}
+
 
