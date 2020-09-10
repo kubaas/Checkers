@@ -2,25 +2,24 @@
 // Created by jakub on 09.08.2020.
 //
 
-#ifndef CHECKERS_SQUARE_H
-#define CHECKERS_SQUARE_H
+#pragma once
 
+#include <memory>
 #include "Piece.h"
+
 
 class Piece;
 
 class Square {
 private:
-    Piece* piece;
+    Piece *piece;
 public:
     Square();
 
     void setPiece(Piece *piece);
 
-    Piece *getPiece() const;
+    Piece *const getPiece() const;
 
     bool hasPiece();
 };
 
-
-#endif //CHECKERS_SQUARE_H

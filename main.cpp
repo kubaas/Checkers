@@ -21,6 +21,9 @@ int main() {
         std::cout << std::endl;
         if(board->getPlayerTurn() == -1) { std::cout << std::endl << "Turn: WHITE" << std::endl; }
         else { std::cout << std::endl << "Turn: RED" << std::endl; }
+
+//        board->checkBoard();
+
         std::cout << "Pick your piece (number letter): " << std::endl;
         std::cin >> oldX;
         std::cin >> oldY;

@@ -57,3 +57,7 @@ Piece *Queen::checkDiagonal(std::vector<std::vector<Square>> boardFields, int ol
     }
     return nullptr;
 }
+
+char Queen::getType() {
+    return 'q';
+}

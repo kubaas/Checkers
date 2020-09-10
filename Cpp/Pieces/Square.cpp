@@ -9,7 +9,7 @@ void Square::setPiece(Piece *piece) {
     Square::piece = piece;
 }
 
-Piece *Square::getPiece() const {
+Piece *const Square::getPiece() const {
     return piece;
 }
 

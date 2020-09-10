@@ -39,3 +39,7 @@ void Normal::print() {
         std::cout << "nr";
 }
 
+char Normal::getType() {
+    return 'n';
+}
+

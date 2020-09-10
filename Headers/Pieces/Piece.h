@@ -2,9 +2,7 @@
 // Created by jakub on 09.08.2020.
 //
 
-#ifndef CHECKERS_PIECE_H
-#define CHECKERS_PIECE_H
-
+#pragma once
 
 #include <vector>
 #include "Square.h"
@@ -41,7 +39,7 @@ public:
     virtual MoveUtil move(std::vector<std::vector<Square>> , int , int) = 0;
 
     virtual void print() = 0;
+
+    virtual char getType() = 0;
 };
 
-
-#endif //CHECKERS_PIECE_H

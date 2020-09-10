@@ -2,9 +2,7 @@
 // Created by jakub on 09.08.2020.
 //
 
-#ifndef CHECKERS_NORMAL_H
-#define CHECKERS_NORMAL_H
-
+#pragma once
 
 #include "../../Util/MoveUtil.h"
 
@@ -14,7 +12,7 @@ public:
     ~Normal();
     MoveUtil move(std::vector<std::vector<Square>> array, int newX, int newY) override;
     void print() override;
+
+    char getType() override;
 };
 
-
-#endif //CHECKERS_NORMAL_H

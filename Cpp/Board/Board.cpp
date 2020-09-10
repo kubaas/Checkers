@@ -165,4 +165,23 @@ int Board::getPlayerTurn() const {
     return playerTurn;
 }
 
+void Board::checkBoard() {
+
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            if(playerTurn == boardFields[i][j].getPiece()->getColor())
+            {
+                if (boardFields[i][j].getPiece()->getType() == 'n')
+                {
+
+//                        if (boardFields[i+playerTurn][j+1].hasPiece() || boardFields[i+playerTurn][j+1].hasPiece()
+                                    
+                }
+            }
+        }
+    }
+}
+
 

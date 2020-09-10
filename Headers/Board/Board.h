@@ -2,9 +2,7 @@
 // Created by jakub on 09.08.2020.
 //
 
-#ifndef CHECKERS_BOARD_H
-#define CHECKERS_BOARD_H
-
+#pragma once
 
 #include <vector>
 #include "../Pieces/Square.h"
@@ -30,7 +28,5 @@ public:
     int getRNumber() const;
     int getWNumber() const;
     int getPlayerTurn() const;
+    void checkBoard();
 };
-
-
-#endif //CHECKERS_BOARD_H

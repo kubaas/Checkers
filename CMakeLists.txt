@@ -1,6 +1,17 @@
 cmake_minimum_required(VERSION 3.16)
-project(checkers)
+project(checkers CXX)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
-add_executable(checkers main.cpp Cpp/Pieces/Piece.cpp Headers/Pieces/Piece.h Cpp/Pieces/Square.cpp Headers/Pieces/Square.h Cpp/Board/Board.cpp Headers/Board/Board.h Cpp/Util/MoveUtil.cpp Headers/Util/MoveUtil.h Cpp/Pieces/Figures/Normal.cpp Headers/Pieces/Figures/Normal.h Cpp/Pieces/Figures/Queen.cpp Headers/Pieces/Figures/Queen.h)
+set(SOURCES
+    Cpp/Board/Board.cpp
+    Cpp/Pieces/Piece.cpp
+    Cpp/Pieces/Square.cpp
+    Cpp/Pieces/Figures/Normal.cpp
+    Cpp/Pieces/Figures/Queen.cpp
+    Cpp/Util/MoveUtil.cpp
+)
+
+add_executable(checkers main.cpp)
+add_library(source_files SHARED ${SOURCES})
+target_link_libraries(checkers source_files)
